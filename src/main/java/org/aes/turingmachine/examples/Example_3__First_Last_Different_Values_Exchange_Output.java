@@ -38,9 +38,9 @@ public class Example_3__First_Last_Different_Values_Exchange_Output {
 
         QNode q5 = new QNode("q5");
         QNode q6 = new QNode("q6");
-        QNode q7 = new QNode("q6");
-        QNode q8 = new QNode("q6");
-        QNode q9 = new QNode("q6");
+        QNode q7 = new QNode("q7");
+        QNode q8 = new QNode("q8");
+        QNode q9 = new QNode("q9");
 
 
 //        q0.setAsFinalSituation();
