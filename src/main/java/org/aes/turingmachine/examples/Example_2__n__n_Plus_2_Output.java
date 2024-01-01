@@ -5,10 +5,10 @@ import org.aes.turingmachine.QNode;
 import org.aes.turingmachine.QNodeFundamentals;
 import org.aes.turingmachine.TuringMacine;
 
-public class Example_1__n__n_Plus_2_Output {
+public class Example_2__n__n_Plus_2_Output {
     StringBuilder tape = new StringBuilder();
 
-    public Example_1__n__n_Plus_2_Output(int aval, int bval) {
+    public Example_2__n__n_Plus_2_Output(int aval, int bval) {
 
         for (int i = 0; i < aval; i++) {
             tape.append("a");
@@ -19,7 +19,7 @@ public class Example_1__n__n_Plus_2_Output {
         solve();
     }
 
-    public Example_1__n__n_Plus_2_Output(String text) {
+    public Example_2__n__n_Plus_2_Output(String text) {
         tape = new StringBuilder(text);
         solve();
     }

@@ -6,6 +6,7 @@ public class TuringMacine {
     private StringBuilder tape;
     private int readHead = 0;
     QNode qNode;
+    int counter = 0;
 
     public boolean start(StringBuilder tape, QNode q0) {
         this.tape = tape;
@@ -16,7 +17,7 @@ public class TuringMacine {
         try {
 
             result = process();
-
+//            System.out.println("Last Form Of Tape : " + tape);
         } catch (NullPointerException e) {
             if (qNode.getNodeFundMap().get(getCharAtReadHead()) == null) {
                 System.err.println("--------------------- Error Occured : " + readHead + ". index in Tape is not able to read by " + qNode.getName()
@@ -25,10 +26,16 @@ public class TuringMacine {
                 e.printStackTrace();
             }
         }
-        return process();
+        return result;
     }
 
-    int counter = 0;
+    private void clearTape() {
+        for (int i = 0; i < tape.length(); i++) {
+            if (tape.charAt(i) == 'B') {
+                tape.deleteCharAt(i);
+            }
+        }
+    }
 
 
     public String getTapeReadableFormat() {
@@ -44,7 +51,9 @@ public class TuringMacine {
         while (!qNode.isOver()) {
             counter++;
             System.out.print(counter + "-) ");
+            clearTape();
             qNode.move(this);
+
         }
 
         return qNode.isOver();

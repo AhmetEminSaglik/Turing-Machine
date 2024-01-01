@@ -51,14 +51,17 @@ public class QNode implements QNodeAbilities, QNodeMoveAction {
     @Override
     public boolean isOver() {
         if (nodeFundMap.isEmpty() && isFinalSituation) {
+//            System.out.println("Successfully ended -1");
 //            JOptionPane.showMessageDialog(null, " Uc durum olabilir,  F ve noQNode");
             return true;
         }
         if (nodeFundMap.isEmpty()) {
+//            System.out.println("Successfully ended -2");
             JOptionPane.showMessageDialog(null, " Final QNode degil ama Baska QNODE yok");
             return true;
         }
         if (isFinalSituation) {
+//            System.out.println("Successfully ended -3 ");
 //            JOptionPane.showMessageDialog(null, " Final QNode. Ama baska hareket de yok");
             return true;
         }
