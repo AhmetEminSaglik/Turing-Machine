@@ -149,11 +149,5 @@ public class Example_4__a_b_b_a__b_Equals_a_or_equalsAndlower_2a_Output {
 
         TuringMacine turingMacine = new TuringMacine();
         turingMacine.start(tape, q0);
-
-//        QNode q1 = new QNode();
-
-        // aaa -->bbbbbb ornegini yapan q'leri yazicam sonra calistiracam
-
-
     }
 }

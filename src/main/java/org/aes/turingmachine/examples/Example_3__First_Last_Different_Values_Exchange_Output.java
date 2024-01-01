@@ -119,11 +119,5 @@ public class Example_3__First_Last_Different_Values_Exchange_Output {
 
         TuringMacine turingMacine = new TuringMacine();
         turingMacine.start(tape, q0);
-
-//        QNode q1 = new QNode();
-
-        // aaa -->bbbbbb ornegini yapan q'leri yazicam sonra calistiracam
-
-
     }
 }

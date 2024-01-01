@@ -3,11 +3,9 @@ package org.aes.turingmachine;
 import javax.swing.*;
 import java.util.HashMap;
 
-//public abstract class QNode implements QNodeAbilities, QNodeMoveAction {
 public class QNode implements QNodeAbilities, QNodeMoveAction {
     private String name;
     private char readCharactedFromTape;
-    //    StringBuilder tape;
     private TuringMacine turingMacine;
     private HashMap<Character, QNodeFundamentals> nodeFundMap = new HashMap<>();
     private boolean isFinalSituation = false;
@@ -16,12 +14,7 @@ public class QNode implements QNodeAbilities, QNodeMoveAction {
     public QNode(String name) {
         this.name = name;
     }
-//    read(tape, readHead) {
-//        c = tape.charAt(readHead);
 
-
-    /* Burada Turing machine yerine direk string builder gondersem
-     degisiklik yapsam o zaman turinge' yansir mi? onu ogrenmem lazim.*/
     @Override
     public void read(TuringMacine turingMacine/*StringBuilder tape, int readHead*/) {
         this.turingMacine = turingMacine;
@@ -43,26 +36,19 @@ public class QNode implements QNodeAbilities, QNodeMoveAction {
 
     @Override
     public void activateNextQNode() {
-//        System.out.println("-------------------------");
         turingMacine.updateQNode(activatedQNodeFund.getNextQNode());
-//        System.out.println("activatedQNodeFund.getNextQNode() : " + activatedQNodeFund.getNextQNode());
     }
 
     @Override
     public boolean isOver() {
         if (nodeFundMap.isEmpty() && isFinalSituation) {
-//            System.out.println("Successfully ended -1");
-//            JOptionPane.showMessageDialog(null, " Uc durum olabilir,  F ve noQNode");
             return true;
         }
         if (nodeFundMap.isEmpty()) {
-//            System.out.println("Successfully ended -2");
             JOptionPane.showMessageDialog(null, " Final QNode degil ama Baska QNODE yok");
             return true;
         }
         if (isFinalSituation) {
-//            System.out.println("Successfully ended -3 ");
-//            JOptionPane.showMessageDialog(null, " Final QNode. Ama baska hareket de yok");
             return true;
         }
 
@@ -73,13 +59,8 @@ public class QNode implements QNodeAbilities, QNodeMoveAction {
         nodeFundMap.put(nodeFund.getOldChar(), nodeFund);
     }
 
-//    public void setNodeFundMap(HashMap<Character, QNodeFundamentals> nodeFundMap) {
-//        this.nodeFundMap = nodeFundMap;
-//    }
-
     public void setAsFinalSituation() {
         isFinalSituation = true;
-//        isFinalSituation = finalSituation;
     }
 
     @Override
@@ -90,9 +71,6 @@ public class QNode implements QNodeAbilities, QNodeMoveAction {
         moveReadHead();
         System.out.println(this);
         activateNextQNode();
-
-//        return isOver();
-
     }
 
     @Override

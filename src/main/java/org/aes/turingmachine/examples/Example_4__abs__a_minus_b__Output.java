@@ -41,7 +41,6 @@ public class Example_4__abs__a_minus_b__Output {
         q0.addNodeFund(q0NF1);
         q0.addNodeFund(q0NF2);
 
-
         //        q0.setAsFinalSituation();
         QNodeFundamentals q1NF1 = new QNodeFundamentals('X', 'X', EnumTuringMoveDirection.R, q1);
         QNodeFundamentals q1NF2 = new QNodeFundamentals('Y', 'Y', EnumTuringMoveDirection.R, q1);
@@ -68,39 +67,12 @@ public class Example_4__abs__a_minus_b__Output {
         q3.addNodeFund(q3NF1);
         q3.addNodeFund(q3NF2);
 
-     /*   QNodeFundamentals q4NF1 = new QNodeFundamentals('b', 'b', EnumTuringMoveDirection.L, q4);
-        QNodeFundamentals q4NF2 = new QNodeFundamentals('Y', 'Y', EnumTuringMoveDirection.L, q4);
-        QNodeFundamentals q4NF3 = new QNodeFundamentals('a', 'a', EnumTuringMoveDirection.L, q5);
-        QNodeFundamentals q4NF4 = new QNodeFundamentals('X', 'X', EnumTuringMoveDirection.R, q6);
-        q4.addNodeFund(q4NF1);
-        q4.addNodeFund(q4NF2);
-        q4.addNodeFund(q4NF3);
-        q4.addNodeFund(q4NF4);
-*/
-
         QNodeFundamentals q5NF1 = new QNodeFundamentals('X', 'b', EnumTuringMoveDirection.R, q6);
         QNodeFundamentals q5NF2 = new QNodeFundamentals('Y', 'b', EnumTuringMoveDirection.R, q6);
         q5.addNodeFund(q5NF1);
         q5.addNodeFund(q5NF2);
 
-/*
-        QNodeFundamentals q6NF1 = new QNodeFundamentals('Y', 'Y', EnumTuringMoveDirection.R, q6);
-        QNodeFundamentals q6NF2 = new QNodeFundamentals('b', 'b', EnumTuringMoveDirection.R, q6);
-        QNodeFundamentals q6NF3 = new QNodeFundamentals('Z', 'Z', EnumTuringMoveDirection.R, q6);
-        QNodeFundamentals q6NF4 = new QNodeFundamentals('a', 'X', EnumTuringMoveDirection.L, q7);
-        q6.addNodeFund(q6NF1);
-        q6.addNodeFund(q6NF2);
-        q6.addNodeFund(q6NF3);
-        q6.addNodeFund(q6NF4);*/
-
-
         TuringMacine turingMacine = new TuringMacine();
         turingMacine.start(tape, q0);
-
-//        QNode q1 = new QNode();
-
-        // aaa -->bbbbbb ornegini yapan q'leri yazicam sonra calistiracam
-
-
     }
 }

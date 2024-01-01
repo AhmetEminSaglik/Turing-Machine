@@ -51,11 +51,5 @@ public class Example_1__n__2n_Output {
 
         TuringMacine turingMacine = new TuringMacine();
         turingMacine.start(tape, q0);
-
-//        QNode q1 = new QNode();
-
-        // aaa -->bbbbbb ornegini yapan q'leri yazicam sonra calistiracam
-
-
     }
 }
