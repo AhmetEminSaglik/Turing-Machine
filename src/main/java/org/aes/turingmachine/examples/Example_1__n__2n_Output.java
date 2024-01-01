@@ -1,15 +1,18 @@
-package org.aes;
+package org.aes.turingmachine.examples;
 
-import org.aes.turingmachine.QNode;
 import org.aes.turingmachine.EnumTuringMoveDirection;
+import org.aes.turingmachine.QNode;
 import org.aes.turingmachine.QNodeFundamentals;
 import org.aes.turingmachine.TuringMacine;
 
-public class Main {
+public class Example_1__n__2n_Output {
+    public Example_1__n__2n_Output(int inputValue) {
 
-    public static void main(String[] args) {
 
-        StringBuilder tape = new StringBuilder("aaa");
+        StringBuilder tape = new StringBuilder();
+        for (int i = 0; i < inputValue; i++) {
+            tape.append("a");
+        }
 
         QNode q0 = new QNode("q0");
         QNode q1 = new QNode("q1");
@@ -55,6 +58,4 @@ public class Main {
 
 
     }
-
-
 }

@@ -1,0 +1,57 @@
+    Turing Makinesi
+    1-) Serit var (Tape)   : kullanici bu seridi verir ve islemlere gore uyuyor mu uymuyor mu test edilir.
+    - String builder ile girilir.
+    2-) q0,q1...qn var -->
+    - read/update
+    - R or L
+    - qx
+
+    3-) interface QNodeAbilities
+    read(StringBuilder tape, int readHead);                --> turing okuma kafasinin oldugu seritdeki degeri okur.
+    update();              --> okunan degerin hashmap'deki objesine gore nasil updatelenecegi belirlenir
+    moveToDirection();     --> okunan degerin hashmap'deki objesine gore nasil hangi yone gidecegi belirlenir
+    activateNextQNode();   --> okunan degerin hashmap'deki objesine gore sonraki qx degeri belirlenir.
+
+
+    4-) interface QNodeMoveAction
+    move()  --> char c  ||   Turing tape  parametresini alabilir. ona gore  QNodeAbilities islemlerini gerceklestirir
+
+
+    5-) abstract class BaseQNode implements QNodeAbilities, QNodeMoveAction
+
+
+
+
+
+    class Turing makinesi{
+    StringBuilder tape="aaabbb";
+    int readHead=0;
+    BaseQNode qn=QNode_0;
+
+    public void start(BaseQNode qn){
+    this.qn=qn;
+
+    qn.read(tape,readHead);
+
+    }
+    }
+
+
+    class QNode_0 extends BaseQNode {
+    char c;
+    HashMap<Character, QNodeFundamentasl);
+    read(tape,readHead){
+    c=tape.charAt(readHead);
+
+    }
+    }
+
+
+    class QNodeFundamentals{
+    BaseQNode nextQNode;
+    char newChar;
+    EnumDirection direction;
+    }
+    }
+
+
