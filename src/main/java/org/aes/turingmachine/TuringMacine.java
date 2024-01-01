@@ -20,7 +20,7 @@ public class TuringMacine {
 //            System.out.println("Last Form Of Tape : " + tape);
         } catch (NullPointerException e) {
             if (qNode.getNodeFundMap().get(getCharAtReadHead()) == null) {
-                System.err.println("--------------------- Error Occured : " + readHead + ". index in Tape is not able to read by " + qNode.getName()
+                System.err.println("--------------------- Error Occured : " + readHead + ". index ("+tape.charAt(readHead)+") in Tape is not able to read by " + qNode.getName()
                         + "\ntape : " + getTapeReadableFormat());
             } else {
                 e.printStackTrace();
