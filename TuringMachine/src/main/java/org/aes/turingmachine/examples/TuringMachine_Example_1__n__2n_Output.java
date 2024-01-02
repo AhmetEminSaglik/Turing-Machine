@@ -16,7 +16,7 @@ import java.util.List;
 
 public class TuringMachine_Example_1__n__2n_Output {
     ReadableFormatTape readableFormatTape;
-    ILogger iLogger = new CustomLogger();
+    public ILogger iLogger = new CustomLogger();
     TuringMacine turingMacine = new TuringMacine(readableFormatTape);
     QNode q0 = new QNode("q0");
     QNode q1 = new QNode("q1");

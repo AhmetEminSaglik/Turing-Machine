@@ -17,7 +17,7 @@ import java.util.List;
 public class TuringMachine_Example_4__a_b_b_a__b_Equals_a_or_equalsAndlower_2a_Output {
     StringBuilder tape = new StringBuilder();
     ReadableFormatTape readableFormatTape;
-    ILogger iLogger = new CustomLogger();
+    public ILogger iLogger = new CustomLogger();
     TuringMacine turingMacine = new TuringMacine(readableFormatTape);
     QNode q0 = new QNode("q0");
     QNode q1 = new QNode("q1");

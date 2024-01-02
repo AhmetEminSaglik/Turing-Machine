@@ -18,7 +18,7 @@ import java.util.Random;
 public class TuringMachine_Example_3__First_Last_Different_Values_Exchange_Output {
     StringBuilder tape = new StringBuilder();
     ReadableFormatTape readableFormatTape;
-    ILogger iLogger = new CustomLogger();
+    public ILogger iLogger = new CustomLogger();
     TuringMacine turingMacine = new TuringMacine(readableFormatTape);
 
     QNode q0 = new QNode("q0");

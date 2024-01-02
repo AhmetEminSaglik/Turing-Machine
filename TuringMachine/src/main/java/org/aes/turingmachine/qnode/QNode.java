@@ -87,8 +87,8 @@ public class QNode implements QNodeAbilities, QNodeMoveAction {
     public String toString() {
         return "QNode{" +
                 "name='" + name + '\'' +
-                ", isFinalSituation=" + isFinalSituation +
-                ", activatedQNodeFund=" + activatedQNodeFund +
+                ", Final State =" + isFinalSituation +
+                ", Next Process Info =" + activatedQNodeFund +
                 '}';
     }
 
