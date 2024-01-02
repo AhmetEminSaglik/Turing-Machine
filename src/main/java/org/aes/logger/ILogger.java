@@ -6,4 +6,5 @@ public interface ILogger {
     void addMsg(String msg);
 
     List<String> getAllMsg();
+
 }

@@ -5,12 +5,16 @@ import org.aes.turingmachine.qnode.QNode;
 import org.aes.turingmachine.qnode.QNodeFundamentals;
 import org.aes.turingmachine.machine.TuringMacine;
 import org.aes.turingmachine.exception.QNodeException;
+import org.aes.utils.abstracts.ReadableFormatTape;
+import org.aes.utils.concretes.ConsoleReadableFormatForTape;
 
 public class TuringMachine_Example_2__n__n_Plus_2_Output {
     StringBuilder tape = new StringBuilder();
+    ReadableFormatTape readableFormatTape;
 
-    public TuringMachine_Example_2__n__n_Plus_2_Output(int aval, int bval) throws QNodeException {
 
+    public TuringMachine_Example_2__n__n_Plus_2_Output(ReadableFormatTape readableFormatTape, int aval, int bval) throws QNodeException {
+        this.readableFormatTape = readableFormatTape;
         for (int i = 0; i < aval; i++) {
             tape.append("a");
         }
@@ -20,7 +24,8 @@ public class TuringMachine_Example_2__n__n_Plus_2_Output {
         solve();
     }
 
-    public TuringMachine_Example_2__n__n_Plus_2_Output(String text) throws QNodeException {
+    public TuringMachine_Example_2__n__n_Plus_2_Output(ReadableFormatTape readableFormatTape, String text) throws QNodeException {
+        this.readableFormatTape = readableFormatTape;
         tape = new StringBuilder(text);
         solve();
     }
@@ -75,7 +80,7 @@ public class TuringMachine_Example_2__n__n_Plus_2_Output {
         q5.addNodeFund(q5NF1);
 
 
-        TuringMacine turingMacine = new TuringMacine();
+        TuringMacine turingMacine = new TuringMacine(readableFormatTape);
         turingMacine.start(tape, q0);
 
     }

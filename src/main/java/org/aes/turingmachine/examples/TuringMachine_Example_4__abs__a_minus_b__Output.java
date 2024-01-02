@@ -5,11 +5,17 @@ import org.aes.turingmachine.qnode.QNode;
 import org.aes.turingmachine.qnode.QNodeFundamentals;
 import org.aes.turingmachine.machine.TuringMacine;
 import org.aes.turingmachine.exception.QNodeException;
+import org.aes.utils.abstracts.ReadableFormatTape;
+import org.aes.utils.concretes.ConsoleReadableFormatForTape;
 
 public class TuringMachine_Example_4__abs__a_minus_b__Output {
     StringBuilder tape = new StringBuilder();
 
-    public TuringMachine_Example_4__abs__a_minus_b__Output(int aVal, int bVal) throws QNodeException {
+    ReadableFormatTape readableFormatTape;
+
+
+    public TuringMachine_Example_4__abs__a_minus_b__Output(ReadableFormatTape readableFormatTape, int aVal, int bVal) throws QNodeException {
+        this.readableFormatTape = readableFormatTape;
         for (int i = 0; i < aVal; i++) {
             tape.append("a");
         }
@@ -19,7 +25,8 @@ public class TuringMachine_Example_4__abs__a_minus_b__Output {
         solve();
     }
 
-    public TuringMachine_Example_4__abs__a_minus_b__Output(String text) throws QNodeException {
+    public TuringMachine_Example_4__abs__a_minus_b__Output(ReadableFormatTape readableFormatTape, String text) throws QNodeException {
+        this.readableFormatTape = readableFormatTape;
         tape = new StringBuilder(text);
         solve();
     }
@@ -72,8 +79,7 @@ public class TuringMachine_Example_4__abs__a_minus_b__Output {
         QNodeFundamentals q5NF2 = new QNodeFundamentals('Y', 'b', EnumTuringMoveDirection.R, q6);
         q5.addNodeFund(q5NF1);
         q5.addNodeFund(q5NF2);
-
-        TuringMacine turingMacine = new TuringMacine();
+        TuringMacine turingMacine = new TuringMacine(readableFormatTape);
         turingMacine.start(tape, q0);
     }
 }

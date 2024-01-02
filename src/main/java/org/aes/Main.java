@@ -5,6 +5,7 @@ import org.aes.turingmachine.machine.direction.EnumTuringMoveDirection;
 import org.aes.turingmachine.qnode.QNodeFundamentals;
 import org.aes.turingmachine.machine.TuringMacine;
 import org.aes.turingmachine.exception.QNodeException;
+import org.aes.utils.concretes.ConsoleReadableFormatForTape;
 
 public class Main {
 
@@ -46,7 +47,7 @@ public class Main {
         q3.addNodeFund(q3NF3);
 
 
-        TuringMacine turingMacine = new TuringMacine();
+        TuringMacine turingMacine = new TuringMacine(new ConsoleReadableFormatForTape());
         turingMacine.start(tape, q0);
 
 //        QNode q1 = new QNode();

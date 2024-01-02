@@ -1,12 +1,22 @@
 package org.aes.turingmachine.machine;
 
+import org.aes.logger.CustomLogger;
+import org.aes.logger.ILogger;
 import org.aes.turingmachine.machine.direction.EnumTuringMoveDirection;
 import org.aes.turingmachine.qnode.QNode;
 import org.aes.turingmachine.exception.QNodeException;
+import org.aes.utils.abstracts.ReadableFormatTape;
 
 import javax.swing.*;
 
 public class TuringMacine {
+    private ILogger ilogger;
+    private ReadableFormatTape readableFormat;// = new ConsoleReadableFormatForTape();
+
+    public TuringMacine(ReadableFormatTape readableFormat) {
+        this.readableFormat = readableFormat;
+    }
+
     private StringBuilder tape;
     private int readHead = 0;
     QNode qNode;
@@ -15,20 +25,28 @@ public class TuringMacine {
     public boolean start(StringBuilder tape, QNode q0) throws QNodeException {
         this.tape = tape;
         this.qNode = q0;
-        System.out.println("Start : " + getTapeReadableFormat());
+//        System.out.println("Start : " + getTapeReadableFormat());
+        ilogger.addMsg("Start : " + getTapeReadableFormat());
 //        q0.move(this);
         boolean result = false;
         try {
 
             result = process();
+            ilogger.getAllMsg().forEach(System.out::println);
+
 //            System.out.println("Last Form Of Tape : " + tape);
         } catch (NullPointerException e) {
             if (qNode.getNodeFundMap().get(getCharAtReadHead()) == null) {
                 String msg = "--------------------- Error Occured : " + readHead + ". index (" + tape.charAt(readHead) + ") in Tape is not able to read by " + qNode.getName()
                         + "\ntape : " + getTapeReadableFormat();
+                ilogger.addMsg(msg);
                 System.err.println(msg);
+
+                ilogger.getAllMsg().forEach(System.out::println);
                 throw new QNodeException(msg);
             } else {
+                ilogger.getAllMsg().forEach(System.out::println);
+
                 e.printStackTrace();
             }
         }
@@ -47,8 +65,10 @@ public class TuringMacine {
     public String getTapeReadableFormat() {
         StringBuilder nsb = new StringBuilder(tape);
         if (readHead + 1 <= tape.length()) {
-            nsb.insert(readHead + 1, "_\u001B[0m");
-            nsb.insert(readHead, "\u001B[31m_");
+            nsb.insert(readHead, readableFormat.getBetterFormat(nsb.charAt(readHead) + ""));
+//            nsb.insert(readHead + 1, "_\u001B[0m");
+//            nsb.insert(readHead, "\u001B[31m_");
+
         }
         return nsb.toString();
     }
@@ -56,7 +76,8 @@ public class TuringMacine {
     private boolean process() {
         while (!qNode.isOver()) {
             counter++;
-            System.out.print(counter + "-) ");
+//            System.out.print(counter + "-) ");
+            ilogger.addMsg("Process:  " + counter);
             clearTape();
             qNode.move(this);
 
@@ -99,5 +120,11 @@ public class TuringMacine {
 
     }
 
+    public void setIlogger(ILogger ilogger) {
+        this.ilogger = ilogger;
+    }
 
+    public void setReadableFormat(ReadableFormatTape readableFormat) {
+        this.readableFormat = readableFormat;
+    }
 }

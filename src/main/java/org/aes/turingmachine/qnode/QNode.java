@@ -1,11 +1,13 @@
 package org.aes.turingmachine.qnode;
 
+import org.aes.logger.ILogger;
 import org.aes.turingmachine.machine.TuringMacine;
 
 import javax.swing.*;
 import java.util.HashMap;
 
 public class QNode implements QNodeAbilities, QNodeMoveAction {
+    ILogger iLogger;
     private String name;
     private char readCharactedFromTape;
     private TuringMacine turingMacine;
@@ -15,6 +17,10 @@ public class QNode implements QNodeAbilities, QNodeMoveAction {
 
     public QNode(String name) {
         this.name = name;
+    }
+
+    public void setiLogger(ILogger iLogger) {
+        this.iLogger = iLogger;
     }
 
     @Override
@@ -69,9 +75,9 @@ public class QNode implements QNodeAbilities, QNodeMoveAction {
     public void move(TuringMacine turingMacine) {
         read(turingMacine);
         update();
-        System.out.println("tape : " + turingMacine.getTapeReadableFormat());
+        iLogger.addMsg("tape : " + turingMacine.getTapeReadableFormat());
         moveReadHead();
-        System.out.println(this);
+        iLogger.addMsg(this.toString());
         activateNextQNode();
     }
 

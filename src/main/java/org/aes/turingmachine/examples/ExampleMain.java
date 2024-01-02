@@ -1,17 +1,23 @@
 package org.aes.turingmachine.examples;
 
 import org.aes.turingmachine.exception.QNodeException;
+import org.aes.utils.abstracts.ReadableFormatTape;
+import org.aes.utils.concretes.ConsoleReadableFormatForTape;
+import org.aes.utils.concretes.HTMLReadableFormatForTape;
 
 public class ExampleMain {
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
 //  1-)
 //  new TuringMachine_Example_1__n__2n_Output(3);
 //                System.out.println("=================================");
 //  2-)
+
+        ReadableFormatTape consoleFormat = new ConsoleReadableFormatForTape();
+        ReadableFormatTape htmlFormat = new HTMLReadableFormatForTape();
         try {
 
-            new TuringMachine_Example_2__n__n_Plus_2_Output("aabbbb");
-
+//            new TuringMachine_Example_2__n__n_Plus_2_Output(consoleFormat, "aabbbb");
+            new TuringMachine_Example_1__n__2n_Output(consoleFormat, 4);
         } catch (QNodeException e) {
             System.out.println(e.getMessage());
 //            throw new RuntimeException(e);

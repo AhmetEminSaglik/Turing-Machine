@@ -5,14 +5,17 @@ import org.aes.turingmachine.qnode.QNode;
 import org.aes.turingmachine.qnode.QNodeFundamentals;
 import org.aes.turingmachine.machine.TuringMacine;
 import org.aes.turingmachine.exception.QNodeException;
+import org.aes.utils.abstracts.ReadableFormatTape;
+import org.aes.utils.concretes.ConsoleReadableFormatForTape;
 
 import java.util.Random;
 
 public class TuringMachine_Example_3__First_Last_Different_Values_Exchange_Output {
     StringBuilder tape = new StringBuilder();
+    ReadableFormatTape readableFormatTape;
 
-    public TuringMachine_Example_3__First_Last_Different_Values_Exchange_Output(int firstIndexValue, int middleDataSize, int lastIndexValue) throws QNodeException {
-
+    public TuringMachine_Example_3__First_Last_Different_Values_Exchange_Output(ReadableFormatTape readableFormatTape, int firstIndexValue, int middleDataSize, int lastIndexValue) throws QNodeException {
+        this.readableFormatTape = readableFormatTape;
         tape.append(firstIndexValue);
 
         for (int i = 0; i < middleDataSize; i++) {
@@ -23,7 +26,8 @@ public class TuringMachine_Example_3__First_Last_Different_Values_Exchange_Outpu
         solve();
     }
 
-    public TuringMachine_Example_3__First_Last_Different_Values_Exchange_Output(String text) throws QNodeException {
+    public TuringMachine_Example_3__First_Last_Different_Values_Exchange_Output(ReadableFormatTape readableFormatTape, String text) throws QNodeException {
+        this.readableFormatTape = readableFormatTape;
         tape = new StringBuilder(text);
         solve();
     }
@@ -118,7 +122,7 @@ public class TuringMachine_Example_3__First_Last_Different_Values_Exchange_Outpu
         q9.addNodeFund(q9NF3);
 
 
-        TuringMacine turingMacine = new TuringMacine();
+        TuringMacine turingMacine = new TuringMacine(readableFormatTape);
         turingMacine.start(tape, q0);
     }
 }

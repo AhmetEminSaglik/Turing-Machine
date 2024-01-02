@@ -5,11 +5,15 @@ import org.aes.turingmachine.qnode.QNode;
 import org.aes.turingmachine.qnode.QNodeFundamentals;
 import org.aes.turingmachine.machine.TuringMacine;
 import org.aes.turingmachine.exception.QNodeException;
+import org.aes.utils.abstracts.ReadableFormatTape;
+import org.aes.utils.concretes.ConsoleReadableFormatForTape;
 
 public class TuringMachine_Example_4__a_b_b_a__b_Equals_a_or_equalsAndlower_2a_Output {
     StringBuilder tape = new StringBuilder();
+    ReadableFormatTape readableFormatTape;
 
-    public TuringMachine_Example_4__a_b_b_a__b_Equals_a_or_equalsAndlower_2a_Output(int aVal1, int bVal1, int bVal2, int aVal2) throws QNodeException {
+    public TuringMachine_Example_4__a_b_b_a__b_Equals_a_or_equalsAndlower_2a_Output(ReadableFormatTape readableFormatTape, int aVal1, int bVal1, int bVal2, int aVal2) throws QNodeException {
+        this.readableFormatTape = readableFormatTape;
         for (int i = 0; i < aVal1; i++) {
             tape.append("a");
         }
@@ -22,7 +26,8 @@ public class TuringMachine_Example_4__a_b_b_a__b_Equals_a_or_equalsAndlower_2a_O
         solve();
     }
 
-    public TuringMachine_Example_4__a_b_b_a__b_Equals_a_or_equalsAndlower_2a_Output(String text) throws QNodeException {
+    public TuringMachine_Example_4__a_b_b_a__b_Equals_a_or_equalsAndlower_2a_Output(ReadableFormatTape readableFormatTape, String text) throws QNodeException {
+        this.readableFormatTape = readableFormatTape;
         tape = new StringBuilder(text);
         solve();
     }
@@ -146,7 +151,7 @@ public class TuringMachine_Example_4__a_b_b_a__b_Equals_a_or_equalsAndlower_2a_O
         q12.addNodeFund(q12NF4);
 
 
-        TuringMacine turingMacine = new TuringMacine();
+        TuringMacine turingMacine = new TuringMacine(readableFormatTape);
         turingMacine.start(tape, q0);
     }
 }
