@@ -1,5 +1,7 @@
 package org.aes.turingmachine;
 
+import org.aes.turingmachine.exception.QNodeException;
+
 import javax.swing.*;
 
 public class TuringMacine {
@@ -8,7 +10,7 @@ public class TuringMacine {
     QNode qNode;
     int counter = 0;
 
-    public boolean start(StringBuilder tape, QNode q0) {
+    public boolean start(StringBuilder tape, QNode q0) throws QNodeException {
         this.tape = tape;
         this.qNode = q0;
         System.out.println("Start : " + getTapeReadableFormat());
@@ -20,8 +22,10 @@ public class TuringMacine {
 //            System.out.println("Last Form Of Tape : " + tape);
         } catch (NullPointerException e) {
             if (qNode.getNodeFundMap().get(getCharAtReadHead()) == null) {
-                System.err.println("--------------------- Error Occured : " + readHead + ". index (" + tape.charAt(readHead) + ") in Tape is not able to read by " + qNode.getName()
-                        + "\ntape : " + getTapeReadableFormat());
+                String msg = "--------------------- Error Occured : " + readHead + ". index (" + tape.charAt(readHead) + ") in Tape is not able to read by " + qNode.getName()
+                        + "\ntape : " + getTapeReadableFormat();
+                System.err.println(msg);
+                throw new QNodeException(msg);
             } else {
                 e.printStackTrace();
             }

@@ -1,12 +1,23 @@
 package org.aes.turingmachine.examples;
 
+import org.aes.turingmachine.exception.QNodeException;
+
 import java.util.Random;
 
 public class ExampleMain {
-    public static void main(String[] args) {
-//  1-)         new Example1_n__2n_Output(3);
+    public static void main(String[] args)  {
+//  1-)
+//  new Example_1__n__2n_Output(3);
 //                System.out.println("=================================");
-//  2-)       new Example_1__n__n_Plus_2_Output("abbb");
+//  2-)
+        try {
+
+            new Example_2__n__n_Plus_2_Output("aabbb");
+
+        } catch (QNodeException e) {
+            System.out.println(e.getMessage());
+//            throw new RuntimeException(e);
+        }
 //                System.out.println("=================================");
 //        int a=3;
 //  3-)       new Example_2__n__n_Plus_2_Output(a,a+2);

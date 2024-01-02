@@ -4,11 +4,12 @@ import org.aes.turingmachine.EnumTuringMoveDirection;
 import org.aes.turingmachine.QNode;
 import org.aes.turingmachine.QNodeFundamentals;
 import org.aes.turingmachine.TuringMacine;
+import org.aes.turingmachine.exception.QNodeException;
 
 public class Example_4__abs__a_minus_b__Output {
     StringBuilder tape = new StringBuilder();
 
-    public Example_4__abs__a_minus_b__Output(int aVal, int bVal) {
+    public Example_4__abs__a_minus_b__Output(int aVal, int bVal) throws QNodeException {
         for (int i = 0; i < aVal; i++) {
             tape.append("a");
         }
@@ -18,12 +19,12 @@ public class Example_4__abs__a_minus_b__Output {
         solve();
     }
 
-    public Example_4__abs__a_minus_b__Output(String text) {
+    public Example_4__abs__a_minus_b__Output(String text) throws QNodeException {
         tape = new StringBuilder(text);
         solve();
     }
 
-    private void solve() {
+    private void solve() throws QNodeException {
 
         QNode q0 = new QNode("q0");
         QNode q1 = new QNode("q1");

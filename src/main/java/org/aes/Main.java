@@ -4,10 +4,11 @@ import org.aes.turingmachine.QNode;
 import org.aes.turingmachine.EnumTuringMoveDirection;
 import org.aes.turingmachine.QNodeFundamentals;
 import org.aes.turingmachine.TuringMacine;
+import org.aes.turingmachine.exception.QNodeException;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws QNodeException {
 
         StringBuilder tape = new StringBuilder("aaa");
 
@@ -33,7 +34,6 @@ public class Main {
         q1.addNodeFund(q1NF1);
         q1.addNodeFund(q1NF2);
         q1.addNodeFund(q1NF3);
-
         QNodeFundamentals q2NF1 = new QNodeFundamentals('B', 'b', EnumTuringMoveDirection.L, q3);
         q2.addNodeFund(q2NF1);
 

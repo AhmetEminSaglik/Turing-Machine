@@ -4,13 +4,14 @@ import org.aes.turingmachine.EnumTuringMoveDirection;
 import org.aes.turingmachine.QNode;
 import org.aes.turingmachine.QNodeFundamentals;
 import org.aes.turingmachine.TuringMacine;
+import org.aes.turingmachine.exception.QNodeException;
 
 import java.util.Random;
 
 public class Example_4__a_b_b_a__b_Equals_a_or_equalsAndlower_2a_Output {
     StringBuilder tape = new StringBuilder();
 
-    public Example_4__a_b_b_a__b_Equals_a_or_equalsAndlower_2a_Output(int aVal1, int bVal1, int bVal2, int aVal2) {
+    public Example_4__a_b_b_a__b_Equals_a_or_equalsAndlower_2a_Output(int aVal1, int bVal1, int bVal2, int aVal2) throws QNodeException {
         for (int i = 0; i < aVal1; i++) {
             tape.append("a");
         }
@@ -23,12 +24,12 @@ public class Example_4__a_b_b_a__b_Equals_a_or_equalsAndlower_2a_Output {
         solve();
     }
 
-    public Example_4__a_b_b_a__b_Equals_a_or_equalsAndlower_2a_Output(String text) {
+    public Example_4__a_b_b_a__b_Equals_a_or_equalsAndlower_2a_Output(String text) throws QNodeException {
         tape = new StringBuilder(text);
         solve();
     }
 
-    private void solve() {
+    private void solve() throws QNodeException {
 
         QNode q0 = new QNode("q0");
         QNode q1 = new QNode("q1");

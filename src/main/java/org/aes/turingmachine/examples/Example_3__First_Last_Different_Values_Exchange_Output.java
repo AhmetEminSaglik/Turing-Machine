@@ -4,13 +4,14 @@ import org.aes.turingmachine.EnumTuringMoveDirection;
 import org.aes.turingmachine.QNode;
 import org.aes.turingmachine.QNodeFundamentals;
 import org.aes.turingmachine.TuringMacine;
+import org.aes.turingmachine.exception.QNodeException;
 
 import java.util.Random;
 
 public class Example_3__First_Last_Different_Values_Exchange_Output {
     StringBuilder tape = new StringBuilder();
 
-    public Example_3__First_Last_Different_Values_Exchange_Output(int firstIndexValue, int middleDataSize, int lastIndexValue) {
+    public Example_3__First_Last_Different_Values_Exchange_Output(int firstIndexValue, int middleDataSize, int lastIndexValue) throws QNodeException {
 
         tape.append(firstIndexValue);
 
@@ -22,12 +23,12 @@ public class Example_3__First_Last_Different_Values_Exchange_Output {
         solve();
     }
 
-    public Example_3__First_Last_Different_Values_Exchange_Output(String text) {
+    public Example_3__First_Last_Different_Values_Exchange_Output(String text) throws QNodeException {
         tape = new StringBuilder(text);
         solve();
     }
 
-    private void solve() {
+    private void solve() throws QNodeException {
 
         QNode q0 = new QNode("q0");
         QNode q1 = new QNode("q1");
