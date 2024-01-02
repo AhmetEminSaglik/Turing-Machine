@@ -22,34 +22,41 @@ public class TuringMacine {
     QNode qNode;
     int counter = 0;
 
-    public boolean start(StringBuilder tape, QNode q0) throws QNodeException {
+    public void start(StringBuilder tape, QNode q0)/* throws QNodeException*/ {
         this.tape = tape;
         this.qNode = q0;
-//        System.out.println("Start : " + getTapeReadableFormat());
         ilogger.addMsg("Start : " + getTapeReadableFormat());
-//        q0.move(this);
-        boolean result = false;
         try {
-
-            result = process();
-            ilogger.getAllMsg().forEach(System.out::println);
-
-//            System.out.println("Last Form Of Tape : " + tape);
-        } catch (NullPointerException e) {
-            if (qNode.getNodeFundMap().get(getCharAtReadHead()) == null) {
-                String msg = "--------------------- Error Occured : " + readHead + ". index (" + tape.charAt(readHead) + ") in Tape is not able to read by " + qNode.getName()
-                        + "\ntape : " + getTapeReadableFormat();
-                ilogger.addMsg(msg);
+            try {
+                process();
+                ilogger.enableLogging();
                 ilogger.getAllMsg().forEach(System.out::println);
-                System.err.println(msg);
-                throw new QNodeException(msg);
-            } else {
+
+            } catch (NullPointerException e) {
+                if (qNode.getNodeFundMap().get(getCharAtReadHead()) == null) {
+                    String msg = ">>>" +
+                            readableFormat.getBetterFormat(" Error Occured : ")
+                            + readHead + ". index (" + tape.charAt(readHead) + ") in " +
+                            readableFormat.getBetterFormat("Tape is not able to read by " + qNode.getName())
+                            + "\ntape : " + getTapeReadableFormat();
+                    ilogger.addMsg(msg);
+//                    ilogger.getAllMsg().forEach(System.out::println);
+                    System.err.println(msg);
+//                    System.out.println("hata firlatilacak");
+                    throw new QNodeException(msg);
+                } else {
 //                ilogger.addMsg(e.toString());
-                ilogger.getAllMsg().forEach(System.out::println);
-                e.printStackTrace();
+                    ilogger.getAllMsg().forEach(System.out::println);
+                    e.printStackTrace();
+                }
             }
+        } catch (QNodeException nodeException) {
+            if (nodeException.getMessage() != null) {
+                ilogger.addMsg(nodeException.getMessage());
+            }
+//            System.out.println("error : "+nodeException.getMessage());
         }
-        return result;
+//        return result;
     }
 
     private void clearTape() {
@@ -65,7 +72,7 @@ public class TuringMacine {
         StringBuilder nsb = new StringBuilder(tape);
         if (readHead + 1 <= tape.length()) {
 //            System.out.println("nsb BEFORE : "+nsb);
-            nsb.insert(readHead+1, readableFormat.getBetterFormat(nsb.charAt(readHead) + ""));
+            nsb.insert(readHead + 1, readableFormat.getBetterFormat(nsb.charAt(readHead) + ""));
             nsb.deleteCharAt(readHead);
 //            System.out.println("nsb AFTER : "+nsb);
 //            nsb.insert(readHead + 1, "_\u001B[0m");
@@ -75,24 +82,26 @@ public class TuringMacine {
         return nsb.toString();
     }
 
-    private boolean process() {
+    private void process() {
         while (!qNode.isOver()) {
             counter++;
 //            System.out.print(counter + "-) ");
             ilogger.addMsg("Process:  " + counter);
             clearTape();
             qNode.move(this);
-
         }
+//        System.out.println("process sonrasi buraya girdi");
 
-        return qNode.isOver();
-//        return true;
+//        return qNode.isOver();
+//        return true;4
 
     }
 
     public void updateQNode(QNode qNode) {
         this.qNode = qNode;
-        process();
+//        if (!qNode.isOver()) {
+            process();
+//        }
     }
 
     public void updateTape(char c) {

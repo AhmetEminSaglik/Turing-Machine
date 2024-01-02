@@ -5,14 +5,28 @@ import java.util.List;
 
 public class CustomLogger implements ILogger {
     List<String> msgList = new ArrayList<>();
+    boolean logginPermision = true;
 
     @Override
     public void addMsg(String msg) {
-        msgList.add(msg);
+        if (logginPermision) {
+            msgList.add(msg);
+        }
     }
 
     @Override
     public List<String> getAllMsg() {
         return msgList;
+    }
+
+    @Override
+    public void enableLogging() {
+        logginPermision = true;
+
+    }
+
+    @Override
+    public void disableLogging() {
+        logginPermision = false;
     }
 }

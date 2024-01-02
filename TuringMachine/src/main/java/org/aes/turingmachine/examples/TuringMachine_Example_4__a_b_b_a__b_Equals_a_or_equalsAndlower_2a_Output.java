@@ -159,6 +159,9 @@ public class TuringMachine_Example_4__a_b_b_a__b_Equals_a_or_equalsAndlower_2a_O
         q12.addNodeFund(q12NF3);
         q12.addNodeFund(q12NF4);
 
+        QNodeFundamentals q13NF1 = new QNodeFundamentals('X', 'X', EnumTuringMoveDirection.L, q13);
+        q13.addNodeFund(q13NF1);
+
         turingMacine.start(tape, q0);
     }
 

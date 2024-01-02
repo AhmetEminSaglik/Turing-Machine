@@ -8,16 +8,15 @@ import org.aes.turingmachine.qnode.QNodeFundamentals;
 import org.aes.turingmachine.machine.TuringMacine;
 import org.aes.turingmachine.exception.QNodeException;
 import org.aes.utils.abstracts.ReadableFormatTape;
-import org.aes.utils.concretes.ConsoleReadableFormatForTape;
 import org.aes.utils.concretes.LoggerEntegrationQNode;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TuringMachine_Example_4__abs__a_minus_b__Output {
+public class TuringMachine_Example_5__abs__a_minus_b__Output {
     StringBuilder tape = new StringBuilder();
     ReadableFormatTape readableFormatTape;
-    private ILogger iLogger = new CustomLogger();
+    public ILogger iLogger = new CustomLogger();
     TuringMacine turingMacine = new TuringMacine(readableFormatTape);
 
     QNode q0 = new QNode("q0");
@@ -28,7 +27,7 @@ public class TuringMachine_Example_4__abs__a_minus_b__Output {
     QNode q5 = new QNode("q5");
     QNode q6 = new QNode("q6");
 
-    public TuringMachine_Example_4__abs__a_minus_b__Output(ReadableFormatTape readableFormatTape, int aVal, int bVal) throws QNodeException {
+    public TuringMachine_Example_5__abs__a_minus_b__Output(ReadableFormatTape readableFormatTape, int aVal, int bVal) throws QNodeException {
         this.readableFormatTape = readableFormatTape;
         for (int i = 0; i < aVal; i++) {
             tape.append("a");
@@ -39,7 +38,7 @@ public class TuringMachine_Example_4__abs__a_minus_b__Output {
         solve();
     }
 
-    public TuringMachine_Example_4__abs__a_minus_b__Output(ReadableFormatTape readableFormatTape, String text) throws QNodeException {
+    public TuringMachine_Example_5__abs__a_minus_b__Output(ReadableFormatTape readableFormatTape, String text) throws QNodeException {
         this.readableFormatTape = readableFormatTape;
         tape = new StringBuilder(text);
         solve();
@@ -104,7 +103,4 @@ public class TuringMachine_Example_4__abs__a_minus_b__Output {
         turingMacine.setReadableFormat(readableFormatTape);
     }
 
-    public ILogger getiLogger() {
-        return iLogger;
-    }
 }

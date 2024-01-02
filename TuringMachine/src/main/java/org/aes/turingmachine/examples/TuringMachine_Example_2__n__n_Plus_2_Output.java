@@ -29,7 +29,7 @@ public class TuringMachine_Example_2__n__n_Plus_2_Output {
     QNode q6 = new QNode("q6");
 
 
-    public TuringMachine_Example_2__n__n_Plus_2_Output(ReadableFormatTape readableFormatTape, int aval, int bval) throws QNodeException {
+    public TuringMachine_Example_2__n__n_Plus_2_Output(ReadableFormatTape readableFormatTape, int aval, int bval)/* throws QNodeException*/ {
         this.readableFormatTape = readableFormatTape;
         for (int i = 0; i < aval; i++) {
             tape.append("a");
@@ -40,13 +40,13 @@ public class TuringMachine_Example_2__n__n_Plus_2_Output {
         solve();
     }
 
-    public TuringMachine_Example_2__n__n_Plus_2_Output(ReadableFormatTape readableFormatTape, String text) throws QNodeException {
+    public TuringMachine_Example_2__n__n_Plus_2_Output(ReadableFormatTape readableFormatTape, String text) /*throws QNodeException*/ {
         this.readableFormatTape = readableFormatTape;
         tape = new StringBuilder(text);
         solve();
     }
 
-    private void solve() throws QNodeException {
+    private void solve()/* throws QNodeException*/ {
 
         q6.setAsFinalSituation();
         setLoggerAndReadableFormat();

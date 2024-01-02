@@ -141,6 +141,9 @@ public class TuringMachine_Example_3__First_Last_Different_Values_Exchange_Outpu
         qNodeList.add(q4);
         qNodeList.add(q5);
         qNodeList.add(q6);
+        qNodeList.add(q7);
+        qNodeList.add(q8);
+        qNodeList.add(q9);
         LoggerEntegrationQNode.setLogger(qNodeList, iLogger);
         turingMacine.setIlogger(iLogger);
         turingMacine.setReadableFormat(readableFormatTape);

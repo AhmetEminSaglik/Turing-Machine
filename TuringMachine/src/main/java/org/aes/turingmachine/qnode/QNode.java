@@ -44,21 +44,28 @@ public class QNode implements QNodeAbilities, QNodeMoveAction {
 
     @Override
     public void activateNextQNode() {
+        System.out.println("activatedQNodeFund.getNextQNode() : "+activatedQNodeFund.getNextQNode().getName()+"-"+activatedQNodeFund.getNextQNode().isFinalSituation);
         turingMacine.updateQNode(activatedQNodeFund.getNextQNode());
     }
 
     @Override
     public boolean isOver() {
-        if (nodeFundMap.isEmpty() && isFinalSituation) {
+       if (nodeFundMap.isEmpty() || isFinalSituation) {
+           iLogger.addMsg(">>> Turing Machine run successfully");
+           iLogger.disableLogging();
             return true;
-        }
+        }/*
         if (nodeFundMap.isEmpty()) {
+            iLogger.addMsg(">>> Turing Machine run successfully");
             JOptionPane.showMessageDialog(null, " Final QNode degil ama Baska QNODE yok \n"+this);
+            iLogger.disableLogging();
             return true;
         }
         if (isFinalSituation) {
+            iLogger.addMsg(">>> Turing Machine run successfully");
+            iLogger.disableLogging();
             return true;
-        }
+        }*/
 
         return false;
     }
@@ -81,6 +88,7 @@ public class QNode implements QNodeAbilities, QNodeMoveAction {
         moveReadHead();
         iLogger.addMsg(this.toString());
         activateNextQNode();
+
     }
 
     @Override

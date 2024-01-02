@@ -7,4 +7,6 @@ public interface ILogger {
 
     List<String> getAllMsg();
 
+    void enableLogging();
+    void disableLogging();
 }
