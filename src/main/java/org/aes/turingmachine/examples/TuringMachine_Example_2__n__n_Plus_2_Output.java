@@ -1,5 +1,7 @@
 package org.aes.turingmachine.examples;
 
+import org.aes.logger.CustomLogger;
+import org.aes.logger.ILogger;
 import org.aes.turingmachine.machine.direction.EnumTuringMoveDirection;
 import org.aes.turingmachine.qnode.QNode;
 import org.aes.turingmachine.qnode.QNodeFundamentals;
@@ -7,10 +9,24 @@ import org.aes.turingmachine.machine.TuringMacine;
 import org.aes.turingmachine.exception.QNodeException;
 import org.aes.utils.abstracts.ReadableFormatTape;
 import org.aes.utils.concretes.ConsoleReadableFormatForTape;
+import org.aes.utils.concretes.LoggerEntegrationQNode;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TuringMachine_Example_2__n__n_Plus_2_Output {
     StringBuilder tape = new StringBuilder();
     ReadableFormatTape readableFormatTape;
+    ILogger iLogger = new CustomLogger();
+    TuringMacine turingMacine = new TuringMacine(readableFormatTape);
+
+    QNode q0 = new QNode("q0");
+    QNode q1 = new QNode("q1");
+    QNode q2 = new QNode("q2");
+    QNode q3 = new QNode("q3");
+    QNode q4 = new QNode("q4");
+    QNode q5 = new QNode("q5");
+    QNode q6 = new QNode("q6");
 
 
     public TuringMachine_Example_2__n__n_Plus_2_Output(ReadableFormatTape readableFormatTape, int aval, int bval) throws QNodeException {
@@ -32,15 +48,8 @@ public class TuringMachine_Example_2__n__n_Plus_2_Output {
 
     private void solve() throws QNodeException {
 
-        QNode q0 = new QNode("q0");
-        QNode q1 = new QNode("q1");
-        QNode q2 = new QNode("q2");
-        QNode q3 = new QNode("q3");
-        QNode q4 = new QNode("q4");
-        QNode q5 = new QNode("q5");
-        QNode q6 = new QNode("q6");
         q6.setAsFinalSituation();
-
+        setLoggerAndReadableFormat();
 
 //        q0.setAsFinalSituation();
         QNodeFundamentals q0NF1 = new QNodeFundamentals('a', 'X', EnumTuringMoveDirection.R, q1);
@@ -80,8 +89,22 @@ public class TuringMachine_Example_2__n__n_Plus_2_Output {
         q5.addNodeFund(q5NF1);
 
 
-        TuringMacine turingMacine = new TuringMacine(readableFormatTape);
+//        TuringMacine turingMacine = new TuringMacine(readableFormatTape);
         turingMacine.start(tape, q0);
 
+    }
+
+    private void setLoggerAndReadableFormat() {
+        List<QNode> qNodeList = new ArrayList<>();
+        qNodeList.add(q0);
+        qNodeList.add(q1);
+        qNodeList.add(q2);
+        qNodeList.add(q3);
+        qNodeList.add(q4);
+        qNodeList.add(q5);
+        qNodeList.add(q6);
+        LoggerEntegrationQNode.setLogger(qNodeList, iLogger);
+        turingMacine.setIlogger(iLogger);
+        turingMacine.setReadableFormat(readableFormatTape);
     }
 }

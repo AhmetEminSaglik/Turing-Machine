@@ -53,7 +53,7 @@ public class QNode implements QNodeAbilities, QNodeMoveAction {
             return true;
         }
         if (nodeFundMap.isEmpty()) {
-            JOptionPane.showMessageDialog(null, " Final QNode degil ama Baska QNODE yok");
+            JOptionPane.showMessageDialog(null, " Final QNode degil ama Baska QNODE yok \n"+this);
             return true;
         }
         if (isFinalSituation) {
@@ -75,6 +75,8 @@ public class QNode implements QNodeAbilities, QNodeMoveAction {
     public void move(TuringMacine turingMacine) {
         read(turingMacine);
         update();
+//        System.out.println("turingMacine.getTapeReadableFormat() "+turingMacine.getTapeReadableFormat());
+//        System.out.println("ilogger "+iLogger);
         iLogger.addMsg("tape : " + turingMacine.getTapeReadableFormat());
         moveReadHead();
         iLogger.addMsg(this.toString());

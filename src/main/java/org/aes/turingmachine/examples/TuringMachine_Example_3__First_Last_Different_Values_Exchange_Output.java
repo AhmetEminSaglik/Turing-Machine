@@ -1,5 +1,7 @@
 package org.aes.turingmachine.examples;
 
+import org.aes.logger.CustomLogger;
+import org.aes.logger.ILogger;
 import org.aes.turingmachine.machine.direction.EnumTuringMoveDirection;
 import org.aes.turingmachine.qnode.QNode;
 import org.aes.turingmachine.qnode.QNodeFundamentals;
@@ -7,12 +9,29 @@ import org.aes.turingmachine.machine.TuringMacine;
 import org.aes.turingmachine.exception.QNodeException;
 import org.aes.utils.abstracts.ReadableFormatTape;
 import org.aes.utils.concretes.ConsoleReadableFormatForTape;
+import org.aes.utils.concretes.LoggerEntegrationQNode;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class TuringMachine_Example_3__First_Last_Different_Values_Exchange_Output {
     StringBuilder tape = new StringBuilder();
     ReadableFormatTape readableFormatTape;
+    ILogger iLogger = new CustomLogger();
+    TuringMacine turingMacine = new TuringMacine(readableFormatTape);
+
+    QNode q0 = new QNode("q0");
+    QNode q1 = new QNode("q1");
+    QNode q2 = new QNode("q2");
+    QNode q3 = new QNode("q3");
+    QNode q4 = new QNode("q4");
+
+    QNode q5 = new QNode("q5");
+    QNode q6 = new QNode("q6");
+    QNode q7 = new QNode("q7");
+    QNode q8 = new QNode("q8");
+    QNode q9 = new QNode("q9");
 
     public TuringMachine_Example_3__First_Last_Different_Values_Exchange_Output(ReadableFormatTape readableFormatTape, int firstIndexValue, int middleDataSize, int lastIndexValue) throws QNodeException {
         this.readableFormatTape = readableFormatTape;
@@ -33,21 +52,8 @@ public class TuringMachine_Example_3__First_Last_Different_Values_Exchange_Outpu
     }
 
     private void solve() throws QNodeException {
-
-        QNode q0 = new QNode("q0");
-        QNode q1 = new QNode("q1");
-        QNode q2 = new QNode("q2");
-        QNode q3 = new QNode("q3");
-        QNode q4 = new QNode("q4");
         q4.setAsFinalSituation();
-
-        QNode q5 = new QNode("q5");
-        QNode q6 = new QNode("q6");
-        QNode q7 = new QNode("q7");
-        QNode q8 = new QNode("q8");
-        QNode q9 = new QNode("q9");
-
-
+        setLoggerAndReadableFormat();
 //        q0.setAsFinalSituation();
         QNodeFundamentals q0NF1 = new QNodeFundamentals('1', 'X', EnumTuringMoveDirection.R, q1);
         QNodeFundamentals q0NF2 = new QNodeFundamentals('0', 'X', EnumTuringMoveDirection.R, q6);
@@ -122,7 +128,21 @@ public class TuringMachine_Example_3__First_Last_Different_Values_Exchange_Outpu
         q9.addNodeFund(q9NF3);
 
 
-        TuringMacine turingMacine = new TuringMacine(readableFormatTape);
         turingMacine.start(tape, q0);
+    }
+
+
+    private void setLoggerAndReadableFormat() {
+        List<QNode> qNodeList = new ArrayList<>();
+        qNodeList.add(q0);
+        qNodeList.add(q1);
+        qNodeList.add(q2);
+        qNodeList.add(q3);
+        qNodeList.add(q4);
+        qNodeList.add(q5);
+        qNodeList.add(q6);
+        LoggerEntegrationQNode.setLogger(qNodeList, iLogger);
+        turingMacine.setIlogger(iLogger);
+        turingMacine.setReadableFormat(readableFormatTape);
     }
 }

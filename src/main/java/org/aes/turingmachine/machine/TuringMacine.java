@@ -40,13 +40,12 @@ public class TuringMacine {
                 String msg = "--------------------- Error Occured : " + readHead + ". index (" + tape.charAt(readHead) + ") in Tape is not able to read by " + qNode.getName()
                         + "\ntape : " + getTapeReadableFormat();
                 ilogger.addMsg(msg);
-                System.err.println(msg);
-
                 ilogger.getAllMsg().forEach(System.out::println);
+                System.err.println(msg);
                 throw new QNodeException(msg);
             } else {
+//                ilogger.addMsg(e.toString());
                 ilogger.getAllMsg().forEach(System.out::println);
-
                 e.printStackTrace();
             }
         }
@@ -65,7 +64,10 @@ public class TuringMacine {
     public String getTapeReadableFormat() {
         StringBuilder nsb = new StringBuilder(tape);
         if (readHead + 1 <= tape.length()) {
-            nsb.insert(readHead, readableFormat.getBetterFormat(nsb.charAt(readHead) + ""));
+//            System.out.println("nsb BEFORE : "+nsb);
+            nsb.insert(readHead+1, readableFormat.getBetterFormat(nsb.charAt(readHead) + ""));
+            nsb.deleteCharAt(readHead);
+//            System.out.println("nsb AFTER : "+nsb);
 //            nsb.insert(readHead + 1, "_\u001B[0m");
 //            nsb.insert(readHead, "\u001B[31m_");
 
