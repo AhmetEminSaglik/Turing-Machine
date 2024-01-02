@@ -1,4 +1,4 @@
-package org.aes.turingmachine;
+package org.aes.turingmachine.machine.direction;
 
 public enum EnumTuringMoveDirection {
     L(0, "Left"),

@@ -1,5 +1,7 @@
-package org.aes.turingmachine;
+package org.aes.turingmachine.machine;
 
+import org.aes.turingmachine.machine.direction.EnumTuringMoveDirection;
+import org.aes.turingmachine.qnode.QNode;
 import org.aes.turingmachine.exception.QNodeException;
 
 import javax.swing.*;
@@ -85,7 +87,7 @@ public class TuringMacine {
         return tape.charAt(readHead);
     }
 
-    void moveReadHead(EnumTuringMoveDirection direction) {
+    public void moveReadHead(EnumTuringMoveDirection direction) {
         if (EnumTuringMoveDirection.R == direction) {
             readHead++;
         } else if (EnumTuringMoveDirection.L == direction) {

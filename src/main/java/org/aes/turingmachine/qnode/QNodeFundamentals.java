@@ -1,4 +1,6 @@
-package org.aes.turingmachine;
+package org.aes.turingmachine.qnode;
+
+import org.aes.turingmachine.machine.direction.EnumTuringMoveDirection;
 
 public class QNodeFundamentals {
     private  char oldChar;

@@ -1,4 +1,6 @@
-package org.aes.turingmachine;
+package org.aes.turingmachine.qnode;
+
+import org.aes.turingmachine.machine.TuringMacine;
 
 import javax.swing.*;
 import java.util.HashMap;

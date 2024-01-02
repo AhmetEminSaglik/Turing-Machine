@@ -1,9 +1,9 @@
 package org.aes;
 
-import org.aes.turingmachine.QNode;
-import org.aes.turingmachine.EnumTuringMoveDirection;
-import org.aes.turingmachine.QNodeFundamentals;
-import org.aes.turingmachine.TuringMacine;
+import org.aes.turingmachine.qnode.QNode;
+import org.aes.turingmachine.machine.direction.EnumTuringMoveDirection;
+import org.aes.turingmachine.qnode.QNodeFundamentals;
+import org.aes.turingmachine.machine.TuringMacine;
 import org.aes.turingmachine.exception.QNodeException;
 
 public class Main {

@@ -1,13 +1,13 @@
 package org.aes.turingmachine.examples;
 
-import org.aes.turingmachine.EnumTuringMoveDirection;
-import org.aes.turingmachine.QNode;
-import org.aes.turingmachine.QNodeFundamentals;
-import org.aes.turingmachine.TuringMacine;
+import org.aes.turingmachine.machine.direction.EnumTuringMoveDirection;
+import org.aes.turingmachine.qnode.QNode;
+import org.aes.turingmachine.qnode.QNodeFundamentals;
+import org.aes.turingmachine.machine.TuringMacine;
 import org.aes.turingmachine.exception.QNodeException;
 
-public class Example_1__n__2n_Output {
-    public Example_1__n__2n_Output(int inputValue) throws QNodeException {
+public class TuringMachine_Example_1__n__2n_Output {
+    public TuringMachine_Example_1__n__2n_Output(int inputValue) throws QNodeException {
 
 
         StringBuilder tape = new StringBuilder();

@@ -1,17 +1,15 @@
 package org.aes.turingmachine.examples;
 
-import org.aes.turingmachine.EnumTuringMoveDirection;
-import org.aes.turingmachine.QNode;
-import org.aes.turingmachine.QNodeFundamentals;
-import org.aes.turingmachine.TuringMacine;
+import org.aes.turingmachine.machine.direction.EnumTuringMoveDirection;
+import org.aes.turingmachine.qnode.QNode;
+import org.aes.turingmachine.qnode.QNodeFundamentals;
+import org.aes.turingmachine.machine.TuringMacine;
 import org.aes.turingmachine.exception.QNodeException;
 
-import java.util.Random;
-
-public class Example_4__a_b_b_a__b_Equals_a_or_equalsAndlower_2a_Output {
+public class TuringMachine_Example_4__a_b_b_a__b_Equals_a_or_equalsAndlower_2a_Output {
     StringBuilder tape = new StringBuilder();
 
-    public Example_4__a_b_b_a__b_Equals_a_or_equalsAndlower_2a_Output(int aVal1, int bVal1, int bVal2, int aVal2) throws QNodeException {
+    public TuringMachine_Example_4__a_b_b_a__b_Equals_a_or_equalsAndlower_2a_Output(int aVal1, int bVal1, int bVal2, int aVal2) throws QNodeException {
         for (int i = 0; i < aVal1; i++) {
             tape.append("a");
         }
@@ -24,7 +22,7 @@ public class Example_4__a_b_b_a__b_Equals_a_or_equalsAndlower_2a_Output {
         solve();
     }
 
-    public Example_4__a_b_b_a__b_Equals_a_or_equalsAndlower_2a_Output(String text) throws QNodeException {
+    public TuringMachine_Example_4__a_b_b_a__b_Equals_a_or_equalsAndlower_2a_Output(String text) throws QNodeException {
         tape = new StringBuilder(text);
         solve();
     }

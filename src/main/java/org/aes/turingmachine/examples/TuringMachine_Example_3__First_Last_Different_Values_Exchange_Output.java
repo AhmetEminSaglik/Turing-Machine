@@ -1,17 +1,17 @@
 package org.aes.turingmachine.examples;
 
-import org.aes.turingmachine.EnumTuringMoveDirection;
-import org.aes.turingmachine.QNode;
-import org.aes.turingmachine.QNodeFundamentals;
-import org.aes.turingmachine.TuringMacine;
+import org.aes.turingmachine.machine.direction.EnumTuringMoveDirection;
+import org.aes.turingmachine.qnode.QNode;
+import org.aes.turingmachine.qnode.QNodeFundamentals;
+import org.aes.turingmachine.machine.TuringMacine;
 import org.aes.turingmachine.exception.QNodeException;
 
 import java.util.Random;
 
-public class Example_3__First_Last_Different_Values_Exchange_Output {
+public class TuringMachine_Example_3__First_Last_Different_Values_Exchange_Output {
     StringBuilder tape = new StringBuilder();
 
-    public Example_3__First_Last_Different_Values_Exchange_Output(int firstIndexValue, int middleDataSize, int lastIndexValue) throws QNodeException {
+    public TuringMachine_Example_3__First_Last_Different_Values_Exchange_Output(int firstIndexValue, int middleDataSize, int lastIndexValue) throws QNodeException {
 
         tape.append(firstIndexValue);
 
@@ -23,7 +23,7 @@ public class Example_3__First_Last_Different_Values_Exchange_Output {
         solve();
     }
 
-    public Example_3__First_Last_Different_Values_Exchange_Output(String text) throws QNodeException {
+    public TuringMachine_Example_3__First_Last_Different_Values_Exchange_Output(String text) throws QNodeException {
         tape = new StringBuilder(text);
         solve();
     }
