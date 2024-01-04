@@ -17,7 +17,8 @@ public class ExampleConsoleMain {
 //            new TuringMachine_Example_3__First_Last_Different_Values_Exchange_Output(consoleFormat, 1,1,0);
 //            new TuringMachine_Example_3__First_Last_Different_Values_Exchange_Output(consoleFormat, "10");
 //            new TuringMachine_Example_4__a_b_b_a__b_Equals_a_or_equalsAndlower_2a_Output(consoleFormat,1,1,1,12);
-            new TuringMachine_Example_5__abs__a_minus_b__Output(consoleFormat,2,5);
+//            new TuringMachine_Example_5__abs__a_minus_b__Output(consoleFormat,2,5);
+            new TuringMachine_Example_6_EXAM__3a_minus_2b__Output(consoleFormat,"aaab");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

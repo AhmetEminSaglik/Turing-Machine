@@ -190,4 +190,35 @@ public class TuringMachineController {
     }
 
 
+    @GetMapping("/e6")
+    public String getExample6() {
+        TuringMachine_Example_6_EXAM__3a_minus_2b__Output example = null;// new TuringMachine_Example_1__n__2n_Output(formatTape,3);
+        try {
+            example = new TuringMachine_Example_6_EXAM__3a_minus_2b__Output(
+                    formatTape,
+                    "aab");
+//                    random.nextInt(3) + 1, random.nextInt(3) + 1);
+        } catch (Exception e) {
+            return "Error occured : \n" + Utils.getMsgFromLogger(example.iLogger);
+        }
+        return Utils.getFunctionSymbol("f(n,m) = |n-m|") + Utils.getMsgFromLogger(example.iLogger);
+    }
+
+
+    @GetMapping("/e6/{text}")
+    public String getExample6Test(@PathVariable String text) {
+        if (!text.matches("[ab]+")) {
+            return "Sadece a ve b degerlerini metin olarak girebilirsiniz. Orneğin aab. Lütfen tekrar deneyiniz";
+        }
+        TuringMachine_Example_6_EXAM__3a_minus_2b__Output example = null;// new TuringMachine_Example_1__n__2n_Output(formatTape,3);
+        try {
+            example = new TuringMachine_Example_6_EXAM__3a_minus_2b__Output(
+                    formatTape, text);
+        } catch (Exception e) {
+            return "Error occured : \n" + Utils.getMsgFromLogger(example.iLogger);
+        }
+        return Utils.getFunctionSymbol("f(n,m) = 3m-2n ; m > n > 0") + Utils.getMsgFromLogger(example.iLogger);
+    }
+
+
 }
