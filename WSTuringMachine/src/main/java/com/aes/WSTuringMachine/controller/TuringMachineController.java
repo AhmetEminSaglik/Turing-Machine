@@ -201,7 +201,7 @@ public class TuringMachineController {
         } catch (Exception e) {
             return "Error occured : \n" + Utils.getMsgFromLogger(example.iLogger);
         }
-        return Utils.getFunctionSymbol("f(n,m) = |n-m|") + Utils.getMsgFromLogger(example.iLogger);
+        return Utils.getFunctionSymbol("f(n,m) = 3m-2n ; m > n > 0") + Utils.getMsgFromLogger(example.iLogger);
     }
 
 
@@ -219,6 +219,47 @@ public class TuringMachineController {
         }
         return Utils.getFunctionSymbol("f(n,m) = 3m-2n ; m > n > 0") + Utils.getMsgFromLogger(example.iLogger);
     }
+
+
+
+
+
+
+
+
+
+
+
+    @GetMapping("/e7")
+    public String getExample7() {
+        TuringMachine_Example_7__run_n_for__pow_n___Output example = null;// new TuringMachine_Example_1__n__2n_Output(formatTape,3);
+        try {
+            example = new TuringMachine_Example_7__run_n_for__pow_n___Output(
+                    formatTape,
+                    "aa");
+//                    random.nextInt(3) + 1, random.nextInt(3) + 1);
+        } catch (Exception e) {
+            return "Error occured : \n" + Utils.getMsgFromLogger(example.iLogger);
+        }
+        return Utils.getFunctionSymbol("f(n) = n^2") + Utils.getMsgFromLogger(example.iLogger);
+    }
+
+
+    @GetMapping("/e7/{text}")
+    public String getExample7Test(@PathVariable String text) {
+        if (!text.matches("[a]+")) {
+            return "Sadece a degerlerini metin olarak girebilirsiniz. Orneğin aab. Lütfen tekrar deneyiniz";
+        }
+        TuringMachine_Example_7__run_n_for__pow_n___Output example = null;// new TuringMachine_Example_1__n__2n_Output(formatTape,3);
+        try {
+            example = new TuringMachine_Example_7__run_n_for__pow_n___Output(
+                    formatTape, text);
+        } catch (Exception e) {
+            return "Error occured : \n" + Utils.getMsgFromLogger(example.iLogger);
+        }
+        return Utils.getFunctionSymbol("f(n) = n^2") + Utils.getMsgFromLogger(example.iLogger);
+    }
+
 
 
 }

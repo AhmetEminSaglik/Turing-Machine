@@ -44,15 +44,18 @@ public class QNode implements QNodeAbilities, QNodeMoveAction {
 
     @Override
     public void activateNextQNode() {
-        System.out.println("activatedQNodeFund.getNextQNode() : "+activatedQNodeFund.getNextQNode().getName()+"-"+activatedQNodeFund.getNextQNode().isFinalSituation);
+//        System.out.println("activatedQNodeFund.getNextQNode() : "+activatedQNodeFund.getNextQNode().getName()+"-"+activatedQNodeFund.getNextQNode().isFinalSituation);
         turingMacine.updateQNode(activatedQNodeFund.getNextQNode());
     }
 
     @Override
     public boolean isOver() {
-       if (nodeFundMap.isEmpty() || isFinalSituation) {
-           iLogger.addMsg(">>> Turing Machine run successfully");
-           iLogger.disableLogging();
+        if (nodeFundMap.isEmpty() || isFinalSituation) {
+//            turingMacine.clearTape();
+//           iLogger.addMsg(turingMacine.getTapeReadableFormat());
+//            iLogger.addMsg(turingMacine.getTape());
+
+            iLogger.disableLogging();
             return true;
         }/*
         if (nodeFundMap.isEmpty()) {
@@ -81,22 +84,23 @@ public class QNode implements QNodeAbilities, QNodeMoveAction {
     @Override
     public void move(TuringMacine turingMacine) {
         read(turingMacine);
+        iLogger.addMsg("tape : " + turingMacine.getTapeReadableFormat());
+        iLogger.addMsg(this.toString());
         update();
 //        System.out.println("turingMacine.getTapeReadableFormat() "+turingMacine.getTapeReadableFormat());
 //        System.out.println("ilogger "+iLogger);
-        iLogger.addMsg("tape : " + turingMacine.getTapeReadableFormat());
+
         moveReadHead();
-        iLogger.addMsg(this.toString());
         activateNextQNode();
 
     }
 
     @Override
     public String toString() {
-        return "QNode{" +
-                "name='" + name + '\'' +
-                ", Final State =" + isFinalSituation +
-                ", Next Process Info =" + activatedQNodeFund +
+        return //"QNode{" +
+                /*" name='" +*/ name +// '\'' +
+                " = { Uc-Durum =" + isFinalSituation +
+                ", Sonraki-Uygulancak-Adim => " + activatedQNodeFund +
                 '}';
     }
 

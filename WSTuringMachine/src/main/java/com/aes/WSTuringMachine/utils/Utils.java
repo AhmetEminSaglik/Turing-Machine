@@ -13,10 +13,11 @@ public class Utils {
             sb.append(list.get(i)).append("<br>");
             if (i % (mod + 1) == 0) {
                 sb.append("<hr>");
-
             }
+
         }
-        return sb.toString();
+
+        return sb.toString().replace("\n","<br>");
     }
 
     public static String getFunctionSymbol(String functionSymbol) {

@@ -8,6 +8,10 @@ import org.aes.turingmachine.exception.QNodeException;
 import org.aes.utils.abstracts.ReadableFormatTape;
 
 import javax.swing.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class TuringMacine {
     private ILogger ilogger;
@@ -30,6 +34,7 @@ public class TuringMacine {
             try {
                 process();
                 ilogger.enableLogging();
+                addLoggerEndSituation();
                 ilogger.getAllMsg().forEach(System.out::println);
 
             } catch (NullPointerException e) {
@@ -59,19 +64,63 @@ public class TuringMacine {
 //        return result;
     }
 
-    private void clearTape() {
+    public void addLoggerEndSituation() {
+
+        ilogger.addMsg("Tape Son Durum : " + getTapeReadableFormat());
+        ilogger.addMsg(qNode.toString());
+        ilogger.addMsg(">>> Turing Machine run successfully");
+        String str = getTape();
+        HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+
+        for (int i = 0; i < str.length(); i++) {
+            if ((str.charAt(i) >= 'a' && str.charAt(i) <= 'z')
+                    || (str.charAt(i) >= 'A' && str.charAt(i) <= 'Z')
+                    || str.charAt(i) >= '0' && str.charAt(i) <= '9') {
+                char c = str.charAt(i);
+                if (map.containsKey(c)) {
+                    map.put(c, map.get(c) + 1);
+                } else {
+                    map.put(c, 1);
+                }
+            }
+
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append("Ciktilar : \n");
+        for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+            sb.append(entry.getKey() + ": " + entry.getValue()).append("\n");
+        }
+        ilogger.addMsg(sb.toString());
+    }
+
+    public void clearTape() {
         for (int i = 0; i < tape.length(); i++) {
             if (tape.charAt(i) == 'B') {
                 tape.deleteCharAt(i);
+                /*if (readHead == 0) {
+                    readHead++;
+                } else {
+                    if (readHead == tape.length())
+                        readHead--;
+                }*/
             }
         }
     }
 
 
+    public String getTape() {
+        return tape.toString();
+    }
+
     public String getTapeReadableFormat() {
         StringBuilder nsb = new StringBuilder(tape);
-        if (readHead + 1 <= tape.length()) {
-//            System.out.println("nsb BEFORE : "+nsb);
+//        if (readHead + 1 <= tape.length()/*&& readHead>=0*/) {
+//        clearTape();
+        if (readHead + 1 <= tape.length()/*&& readHead>=0*/) {
+            if (readHead < 0) {
+                readHead++;
+            }
+
             nsb.insert(readHead + 1, readableFormat.getBetterFormat(nsb.charAt(readHead) + ""));
             nsb.deleteCharAt(readHead);
 //            System.out.println("nsb AFTER : "+nsb);
@@ -87,7 +136,7 @@ public class TuringMacine {
             counter++;
 //            System.out.print(counter + "-) ");
             ilogger.addMsg("Process:  " + counter);
-            clearTape();
+//            clearTape();
             qNode.move(this);
         }
 //        System.out.println("process sonrasi buraya girdi");
@@ -100,7 +149,7 @@ public class TuringMacine {
     public void updateQNode(QNode qNode) {
         this.qNode = qNode;
 //        if (!qNode.isOver()) {
-            process();
+        process();
 //        }
     }
 

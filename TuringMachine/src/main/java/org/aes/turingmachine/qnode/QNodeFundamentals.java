@@ -35,11 +35,13 @@ public class QNodeFundamentals {
 
     @Override
     public String toString() {
-        return "QNodeFundamentals{" +
-                "oldChar=" + oldChar +
-                ", newChar=" + newChar +
-                ", direction=" + direction.getDirection() +
-                ", nextQNode=" + nextQNode.getName() +
+        return "{"+oldChar+"/"+newChar+","+direction.getDirection() +"-->"+nextQNode.getName()+"}";
+        /*
+        return "q-Hareket{" +
+                "Okunan-Deger = " + oldChar +
+                ", Guncellenecek-Deger = " + newChar +
+                ", Yon = " + direction.getDirection() +
+                ", Next-q = " + nextQNode.getName() +
                 '}';
-    }
+    */}
 }

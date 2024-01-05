@@ -31,8 +31,12 @@ public class HomePageController {
         sbUrl.append("<br>");
         sbUrl.append(getHTMLInnerList("Örnek 5 : f(n,m) = |n-m|.", "http://localhost:8080/turing-machine/e5"));
         sbUrl.append(getHTMLInnerList("Test  5 : f(n,m) = |n-m|.", "http://localhost:8080/turing-machine/e5/aab"));
+        sbUrl.append("<br>");
         sbUrl.append(getHTMLInnerList("Örnek 6 : f(n,m) = 3m-2n ; m > n > 0", "http://localhost:8080/turing-machine/e6"));
         sbUrl.append(getHTMLInnerList("Test  6 : f(n,m) = 3m-2n ; m > n > 0", "http://localhost:8080/turing-machine/e6/aab"));
+        sbUrl.append("</br>");
+        sbUrl.append(getHTMLInnerList("Örnek 7 : f(n) = n^2", "http://localhost:8080/turing-machine/e7"));
+        sbUrl.append(getHTMLInnerList("Test  7 : f(n) = n^2", "http://localhost:8080/turing-machine/e7/aaa"));
         sbUrl.append("</ul>");
         return sbUrl.toString();
     }

@@ -180,6 +180,7 @@ public class TuringMachine_Example_4__a_b_b_a__b_Equals_a_or_equalsAndlower_2a_O
         qNodeList.add(q10);
         qNodeList.add(q11);
         qNodeList.add(q12);
+        qNodeList.add(q13);
 //        qNodeList.add(q10);
         LoggerEntegrationQNode.setLogger(qNodeList, iLogger);
         turingMacine.setIlogger(iLogger);
